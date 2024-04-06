@@ -1,0 +1,59 @@
+ExtendReport Operations
+https://www.programsbuzz.com
+https://www.programsbuzz.com/article/cucumber-testng-generate-extent-report-using-extent-adapter-grasshopper
+
+1- Add the relevant dependecy to POM.
+
+        <dependency>
+            <groupId>tech.grasshopper</groupId>
+            <artifactId>extentreports-cucumber7-adapter</artifactId>
+            <version>1.10.1</version>
+        </dependency>
+
+2- The following plugin is added to Runner Class.
+
+   plugin = {"com.aventstack.extentreports.cucumber.adapter.ExtentCucumberAdapter:"}
+
+3- extent.properties file was opened under resources folder and the following 2 lines were added.
+
+extent.reporter.spark.start=true
+extent.reporter.spark.out=test-output/SparkReport/Spark.html
+
+4-  extend report was put because it does not work on Turkish computer.
+
+     public static WebDriver getDriver() {
+           Locale.setDefault(new Locale("EN"));
+           System.setProperty("user.language", "EN");
+
+5- We add the following code to extent.properties for each report to be separate.
+
+       #FolderName
+       basefolder.name=Test Reports/TestReport
+       basefolder.datetimepattern=d-MMM-YY HH.mm.ss
+
+6- To add Screenshot to the report
+ https://www.programsbuzz.com/article/how-add-screenshot-cucumber-extent-report-every-step
+ https://qaautomation.expert/2022/08/10/how-to-add-screenshot-to-cucumber-extentreports/
+
+       a) Added the following section to extends.properties
+
+         #screenshot folder and src settings
+         screenshot.dir=test-output/screenshots/
+         screenshot.rel.path=../screenshots/
+
+       b) The following has been added to Hooks.
+
+              if (senaryo.isFailed()){
+                   TakesScreenshot ts=((TakesScreenshot) GWD.getDriver());
+                   byte[] hafizadakiHali=ts.getScreenshotAs(OutputType.BYTES);
+                   senaryo.attach(hafizadakiHali, "image/png", "screenshot name");
+               }
+
+7-  Required action for PDF Report.
+https://www.programsbuzz.com/article/extent-pdf-report-cucumber-testng
+
+Added the following section to extends.properties
+
+            #PDF Report
+            extent.reporter.pdf.start=true
+            extent.reporter.pdf.out=PdfReport.pdf

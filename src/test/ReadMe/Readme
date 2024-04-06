@@ -1,0 +1,40 @@
+1- 1- I clicked on the new project
+-> MAVEN was selected as the project type and Java 17 was selected as the Java version.
+
+2- The following folder structure appeared in the project opened as Maven:
+   main: Developer's source code
+   test: Tester's codes
+
+3- In the organized folder structure given by Maven, the Cucumber project
+   We will open the appropriate folders below.
+
+   FeatureFiles -> Scenarios here
+   StepDefinitions -> Running step codes of scenarios
+   Pages -> Page Object Model appropriate class, and the necessary classes for them
+   Utilities -> Driver and other tools
+   Runners -> Runners
+
+4- 4- Settings:
+      a) 2 plugins will be added to Intelije
+      1- Cucumber for Java
+      2- Gherkin Language -> https://cucumber.io/docs/gherkin/reference/#keywords
+
+   b) POM.xml -> Project Object Model Settings
+      relevant libs to be added
+
+      Selenium
+      Cucumber
+      TestNG
+      Cucumber-TestNG (merging lib)
+
+
+
+
+
+
+
+
+
+
+
+
