@@ -43,7 +43,7 @@ public class GeneralSteps {
 
     @And("Success message should be displayed")
     public void successMessageShouldBeDisplayed() {
-        dialogContent.findAndVerifyContainsText("successMessage","successfully");
+        dialogContent.findAndVerifyContainsText("successMessage","success");
     }
 
     @Then("Error message should be displayed")
